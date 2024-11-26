@@ -23,6 +23,8 @@
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .9);
   overflow: hidden;
+
+  display: flex; flex-direction: column;
 }
 
 a {
@@ -32,6 +34,7 @@ a {
 
 #app .container-view {
   padding: 20px;
+  padding-bottom: 0;
   background: #fdfdfc;
   position: relative;
 }
@@ -46,8 +49,15 @@ a {
   background-color: white;
 }
 
-.inbox {
-  margin-top: 30px;
+.calls-list {
+  height: 666px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  flex: 1 1 auto;
+}
+
+.calls-list::-webkit-scrollbar {
+  display: none;
 }
 
 .call-date {
@@ -71,6 +81,8 @@ a {
   border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  z-index: 1;
+  padding: 18px 0;
 }
 
 .archive-calls:hover {

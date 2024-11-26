@@ -2,15 +2,22 @@ import useSWR, { mutate } from 'swr';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInbox, faPhoneVolume, faPhoneSlash } from '@fortawesome/free-solid-svg-icons';
+import React, { useRef, useEffect } from 'react';
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Inbox = () => {
+  const messagesEndRef = useRef(null);
+
   const {
     data: calls,
     error,
     isValidating,
   } = useSWR('https://aircall-api.onrender.com/activities', fetcher);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [calls]);
 
   const handlePatchAll = async (calls) => {
     try {
@@ -43,7 +50,7 @@ const Inbox = () => {
         </div>
       </div>
 
-      <div className='inbox'>
+      <div className='calls-list' style={{ maxHeight: 'calc(666px - 121px)', overflowY: 'auto' }}>
         {calls &&
           calls.map((call, index) => {
             if (call.is_archived == false) {
@@ -74,6 +81,8 @@ const Inbox = () => {
               </div>
             }
           })}
+
+          <div ref={messagesEndRef}/>
       </div>
     </div>
   );

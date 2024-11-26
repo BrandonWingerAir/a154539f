@@ -29,7 +29,7 @@ const Archive = () => {
   if (isValidating) return <div className="Loading">Loading...</div>;
 
   return (
-    <div className='inbox'>
+    <div className='calls-list' style={{ maxHeight: 'calc(666px - 121px)', overflowY: 'auto' }}>
       {calls &&
         calls.map((call, index) => {
           if (call.is_archived == true) {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -23,8 +24,8 @@ const Header = () => {
 
       <nav>
         <ul>
-          <li>Inbox</li>
-          <li>All calls</li>
+          <li><Link to="/">Inbox</Link></li>
+          <li><Link to="/archive">All calls</Link></li>
           <li><FontAwesomeIcon icon={faSliders} size='lg'/></li>
         </ul>
       </nav>

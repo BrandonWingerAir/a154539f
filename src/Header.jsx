@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSliders } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   return (
@@ -23,7 +25,7 @@ const Header = () => {
         <ul>
           <li>Inbox</li>
           <li>All calls</li>
-          <li>Icon</li>
+          <li><FontAwesomeIcon icon={faSliders} size='lg'/></li>
         </ul>
       </nav>
     </header>

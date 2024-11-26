@@ -54,6 +54,10 @@
   margin: 15px 0;
 }
 
+.call-summary:hover {
+  cursor: pointer;
+}
+
 .archive-calls {
   width: calc(100% - 40px);
   position: absolute;

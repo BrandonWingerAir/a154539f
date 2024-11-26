@@ -26,7 +26,9 @@ const Data = () => {
                 <p>tried to call on { call.from }</p>
             </div>
 
-            <p className='call-time'>Time</p>
+            <p className='call-time'>
+              {new Date(call.created_at).toLocaleTimeString('en-US',{timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'})}
+            </p>
           </div>
         ))}
     </div>

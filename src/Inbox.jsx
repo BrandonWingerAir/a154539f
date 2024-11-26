@@ -1,5 +1,5 @@
 import useSWR, { mutate } from 'swr';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInbox, faPhoneVolume, faPhoneSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -32,18 +32,6 @@ const Inbox = () => {
     }
   };
 
-  const handlePatchRecord = async (id) => {
-    try {
-      const updatedData = { is_archived: true };
-      await axios.patch(`https://aircall-api.onrender.com/activities/${id}`, updatedData, {
-        headers: { 'Content-Type': 'application/json' }
-      });
-      mutate('https://aircall-api.onrender.com/activities');
-    } catch (error) {
-      console.error('Error updating item:', error);
-    }
-  };
-
   if (error) return <div className='failed'>failed to load</div>;
   if (isValidating) return <div className="Loading">Loading...</div>;
 
@@ -64,10 +52,10 @@ const Inbox = () => {
                   {new Date(call.created_at).toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'}).replace(/,/g, '').replace(/(\s)/, ", ")}
                 </p>
 
-                <div 
+                <Link 
                   className='call-summary' 
                   key={index}
-                  onClick={() => handlePatchRecord(call.id)}
+                  to={'/call/' + call.id}
                 >
                   <div className='call-type'>
                       { call.call_type === 'answered' ? <FontAwesomeIcon icon={faPhoneVolume} style={{color: "#34b31d"}}/> : <FontAwesomeIcon icon={faPhoneSlash} style={{color: "#fc5624"}}/> }
@@ -82,7 +70,7 @@ const Inbox = () => {
                     {new Date(call.created_at).toLocaleTimeString('en-US',{timeZone:'EST',hour12:true,hour:'numeric',minute:'numeric'})}
                     <span></span>
                   </p>
-                </div>
+                </Link>
               </div>
             }
           })}

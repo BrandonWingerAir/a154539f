@@ -6,6 +6,7 @@ import Inbox from './Inbox.jsx';
 import Archive from './Archive.jsx';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Detail from './Detail.jsx';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Inbox/>} />
             <Route path="archive" element={<Archive/>} />
+            <Route path="call/*" element={<Detail/>} />
           </Routes>
         </div>
       </Router>

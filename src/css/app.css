@@ -21,5 +21,29 @@
 
 #app .container-view {
   padding: 20px;
+
 }
 
+.call-summary {
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 10px 0 12px;
+}
+
+.call-type {
+  margin-left: 18px;
+  margin-right: 15px;
+}
+
+.call-summary p {
+  display: block;
+  margin: 0;
+  padding: 2px 0;
+}
+
+.call-time {
+  position: absolute;
+  right: 0;
+}

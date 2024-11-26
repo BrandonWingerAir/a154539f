@@ -2,11 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Header from './Header.jsx';
-import Data from './Data.jsx';
+import Inbox from './Inbox.jsx';
 import Archive from './Archive.jsx';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInbox } from '@fortawesome/free-solid-svg-icons';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -16,14 +13,8 @@ const App = () => {
       <Router>
       <Header/>
         <div className="container-view">
-          <div className='archive-calls'>
-            <div className='call-type'>
-              <FontAwesomeIcon icon={faInbox}/><span>Archive all calls</span>
-            </div>
-          </div>
-
           <Routes>
-            <Route path="/" element={<Data/>} />
+            <Route path="/" element={<Inbox/>} />
             <Route path="archive" element={<Archive/>} />
           </Routes>
         </div>

@@ -4,13 +4,13 @@ header {
   display: flex;
   justify-content: space-between;
   background: white;
-  /* border-bottom: 1px solid #e0e0e0; */
   flex: 0 1 auto;
   z-index: 1;
+  position: relative;
 }
 
 header svg {
-  width: 32%;
+  width: 27%;
   height: 100%;
   align-self: center;
   margin-left: 14px;
@@ -18,7 +18,7 @@ header svg {
 }
 
 nav {
-  width: 70%;
+  width: 65%;
   background: rgb(233,233,233);
   background: linear-gradient(180deg, rgba(233,233,233,1) 0%, rgba(255,255,255,1) 100%);
   padding-left: 14px;
@@ -26,8 +26,10 @@ nav {
   margin-top: 3px;
   border: 1px solid #e0e0e0;
   border-bottom: 0;
+  border-top-left-radius: 25px;
   font-size: 14px;
   font-weight: 600;
+  position: relative;
 }
 
 ul {
@@ -43,16 +45,16 @@ ul:first-child {
 }
 
 .active {
-  border-bottom: 4px solid #fc5624;
   padding-bottom: 16px;
-  /* animation: shrinkSides 2s infinite alternate; */
+  border-bottom: 4px solid #fc5624;
+  animation: showBorder 0.75s alternate;
 }
 
-/* @keyframes shrinkSides {
+@keyframes showBorder {
   from {
-    transform: scale(1);
+    border-bottom: 4px solid white;
   }
   to {
-    transform: scale(0, 1);
+    border-bottom: 4px solid #fc5624;
   }
-} */
+}

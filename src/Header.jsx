@@ -27,12 +27,18 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/" className={ location.pathname == '/' ? 'active' : '' }>
+            <Link 
+              to="/" 
+              className={ location.pathname == '/' ? 'active' : '' }
+            >
               Inbox
             </Link>
           </li>
           <li>
-            <Link to="archive" className={ location.pathname == '/archive' ? 'active' : ''}>
+            <Link 
+              to="archive" 
+              className={ location.pathname == '/archive' ? 'active' : ''}
+            >
               All calls
             </Link>
           </li>

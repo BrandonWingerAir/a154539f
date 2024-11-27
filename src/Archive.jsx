@@ -16,14 +16,16 @@ const Archive = () => {
     isValidating,
   } = useSWR('https://aircall-api.onrender.com/activities', fetcher);
 
+  messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [calls]);
 
-  const [transitionStage, setTransistionStage] = useState("fadeIn");
+  const [transitionStage, setTransitionStage] = useState("fadeIn");
 
   useEffect(() => {
-    if (location !== displayLocation) setTransistionStage("fadeOut");
+    if (location !== displayLocation) setTransitionStage("fadeOut");
   }, [location, displayLocation]);
 
   const handlePatchRequest = async (id) => {
@@ -70,9 +72,9 @@ const Archive = () => {
       </div>
 
       <div 
-        style={{ maxHeight: 'calc(666px - 121px)', overflowY: 'auto' }}
+        style={{ maxHeight: 'calc(666px - 145px)', overflowY: 'auto' }}
         className={`calls-list ${transitionStage}`}
-        onAnimationEnd={() => { setTransistionStage("fadeIn"); }}
+        onAnimationEnd={() => { setTransitionStage("fadeIn"); }}
       >
         {calls &&
           calls.map((call, index) => {
@@ -92,8 +94,10 @@ const Archive = () => {
                   </div>
 
                   <div>
-                      <p>{ call.from }</p>
-                      <p className='call-to'>tried to call on { call.to }</p>
+                      <p className='call-from'>{ call.from }</p>
+                      <p className='call-to'>
+                        call to <span>{ call.to }</span> on <span>{ call.via }</span>
+                      </p>
                   </div>
 
                   <p className='call-time'>

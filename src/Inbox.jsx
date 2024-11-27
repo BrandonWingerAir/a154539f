@@ -14,15 +14,17 @@ const Inbox = () => {
     error,
     isValidating,
   } = useSWR('https://aircall-api.onrender.com/activities', fetcher);
+  
+  messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [calls]);
 
-  const [transitionStage, setTransistionStage] = useState("fadeIn");
+  const [transitionStage, setTransitionStage] = useState("fadeIn");
 
   useEffect(() => {
-    if (location !== displayLocation) setTransistionStage("fadeOut");
+    if (location !== displayLocation) setTransitionStage("fadeOut");
   }, [location, displayLocation]);
 
   const handlePatchAll = async (calls) => {
@@ -50,16 +52,19 @@ const Inbox = () => {
 
   return (
     <div>
-      <div className='archive-calls' onClick={() => handlePatchAll(calls)}>
+      <div 
+        className='archive-calls'
+        onClick={() => handlePatchAll(calls)}
+      >
         <div className='call-type'>
           <FontAwesomeIcon icon={faInbox}/><span>Archive all calls</span>
         </div>
       </div>
 
       <div 
-        style={{ maxHeight: 'calc(666px - 121px)', overflowY: 'auto' }}
+        style={{ maxHeight: 'calc(666px - 125px)', overflowY: 'auto' }}
         className={`calls-list ${transitionStage}`}
-        onAnimationEnd={() => { setTransistionStage("fadeIn"); }}
+        onAnimationEnd={() => { setTransitionStage("fadeIn"); }}
       >
         {calls &&
           calls.map((call, index) => {
@@ -79,8 +84,10 @@ const Inbox = () => {
                   </div>
 
                   <div>
-                      <p>{ call.from }</p>
-                      <p className='call-to'>call to { call.to } on { call.via }</p>
+                      <p className='call-from'>{ call.from }</p>
+                      <p className='call-to'>
+                        call to <span>{ call.to }</span> on <span>{ call.via }</span>
+                      </p>
                   </div>
 
                   <p className='call-time'>

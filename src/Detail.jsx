@@ -11,13 +11,13 @@ const Detail = () => {
     isValidating,
   } = useSWR('https://aircall-api.onrender.com/activities/' + window.location.href.substring(window.location.href.lastIndexOf('/') + 1), fetcher);
 
-  const [transitionStage, setTransistionStage] = useState("fadeIn");
+  const [transitionStage, setTransitionStage] = useState("fadeIn");
 
   useEffect(() => {
-    if (location !== displayLocation) setTransistionStage("fadeOut");
+    if (location !== displayLocation) setTransitionStage("fadeOut");
   }, [location, displayLocation]);
 
-  const handlePatchRecord = async (id) => {
+  const handlePatchRecord = async () => {
     try {
       let updatedData = {};
       
@@ -39,7 +39,7 @@ const Detail = () => {
   if (error) return <div className='failed'>failed to load</div>;
   if (isValidating) return // <div className="Loading">Loading...</div>;
 
-  function Archived({ isArchived }) {
+  function Archived() {
     if (!call.is_archived) {
       return <button className='archive-btn' onClick={() => handlePatchRecord(call.id)}>Archive</button>
     } else {
@@ -50,7 +50,7 @@ const Detail = () => {
   return (
     <div 
       className={`call-details ${transitionStage}`}
-      onAnimationEnd={() => { setTransistionStage("fadeIn"); }}
+      onAnimationEnd={() => { setTransitionStage("fadeIn"); }}
     >
         <p>Direction: {call.direction}</p>
         <p>From: {call.from}</p>

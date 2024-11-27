@@ -1,9 +1,11 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
 
 const Header = () => {
+  const location = useLocation();
+
   return (
     <header>
       <svg width='486px' height='168px' viewBox='0 0 486 168' version='1.1' xmlns='http://www.w3.org/2000/svg'>
@@ -24,9 +26,17 @@ const Header = () => {
 
       <nav>
         <ul>
-          <li><Link to="/">Inbox</Link></li>
-          <li><Link to="/archive">All calls</Link></li>
-          <li><FontAwesomeIcon icon={faSliders} size='lg'/></li>
+          <li>
+            <Link to="/" className={ location.pathname == '/' ? 'active' : '' }>
+              Inbox
+            </Link>
+          </li>
+          <li>
+            <Link to="archive" className={ location.pathname == '/archive' ? 'active' : ''}>
+              All calls
+            </Link>
+          </li>
+          <li><FontAwesomeIcon icon={faSliders} size='lg' /></li>
         </ul>
       </nav>
     </header>

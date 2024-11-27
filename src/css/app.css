@@ -107,6 +107,10 @@ a {
 
 .call-to {
   color: var(--seconday-text);
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
 }
 
 .call-time {

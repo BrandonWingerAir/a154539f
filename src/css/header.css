@@ -41,3 +41,8 @@ ul {
 ul:first-child {
   padding-left: 7px;
 }
+
+.active {
+  border-bottom: 4px solid #fc5624;
+  padding-bottom: 16px;
+}

@@ -1,8 +1,8 @@
+import React, { useRef, useEffect } from 'react';
 import useSWR, { mutate } from 'swr';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInbox, faPhoneVolume, faPhoneSlash } from '@fortawesome/free-solid-svg-icons';
-import React, { useRef, useEffect } from 'react';
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -70,7 +70,7 @@ const Inbox = () => {
 
                   <div>
                       <p>{ call.from }</p>
-                      <p className='call-to'>tried to call on { call.to }</p>
+                      <p className='call-to'>call to { call.to } on { call.via }</p>
                   </div>
 
                   <p className='call-time'>

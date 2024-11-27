@@ -12,12 +12,12 @@ const App = () => {
   return (
     <div className='container'>
       <Router>
-      <Header/>
+        <Header/>
         <div className="container-view">
           <Routes>
-            <Route path="/" element={<Inbox/>} />
-            <Route path="archive" element={<Archive/>} />
-            <Route path="call/*" element={<Detail/>} />
+            <Route path="/" element={<Inbox/>}/>
+            <Route path="archive" element={<Archive/>}/>
+            <Route path="call/*" element={<Detail/>}/>
           </Routes>
         </div>
       </Router>

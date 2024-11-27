@@ -54,6 +54,7 @@ a {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   flex: 1 1 auto;
+  opacity: 0;
 }
 
 .calls-list::-webkit-scrollbar {
@@ -78,7 +79,6 @@ a {
   width: calc(100% - 40px);
   position: absolute;
   top: 0;
-  border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   z-index: 1;
@@ -115,13 +115,13 @@ a {
 
 .call-time {
   position: absolute;
-  right: 3px;
+  right: 8px;
   word-spacing: 5px;
   color: var(--seconday-text);
 }
 
 .call-time span {
-  width: 27px;
+  width: 28px;
   height: 17px;
   position: absolute;
   right: -4px;
@@ -141,7 +141,7 @@ a {
 }
 
 .archive-btn {
-  background: green;
+  background: #4ac422;
   color: white;
   border: 1px solid var(--primary-text);
   padding: 5px 10px;
@@ -150,4 +150,34 @@ a {
 
 .archive-btn:hover {
   cursor: pointer;
+}
+
+.unarchive-btn {
+  background: #fc5624;
+}
+
+.fadeIn {
+  animation: 1s fadeIn forwards;
+}
+
+.fadeOut {
+  animation: 1s fadeOut forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
 }

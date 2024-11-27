@@ -1,6 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect, displayLocation } from 'react';
 import useSWR, { mutate } from 'swr';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInbox, faPhoneVolume, faPhoneSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,6 +19,12 @@ const Archive = () => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [calls]);
+
+  const [transitionStage, setTransistionStage] = useState("fadeIn");
+
+  useEffect(() => {
+    if (location !== displayLocation) setTransistionStage("fadeOut");
+  }, [location, displayLocation]);
 
   const handlePatchRequest = async (id) => {
     try {
@@ -52,7 +59,7 @@ const Archive = () => {
   };
 
   if (error) return <div className='failed'>failed to load</div>;
-  if (isValidating) return <div className="Loading">Loading...</div>;
+  if (isValidating) return // <div className="Loading">Loading...</div>;
 
   return (
     <div>
@@ -62,7 +69,11 @@ const Archive = () => {
         </div>
       </div>
 
-      <div className='calls-list' style={{ maxHeight: 'calc(666px - 121px)', overflowY: 'auto' }}>
+      <div 
+        style={{ maxHeight: 'calc(666px - 121px)', overflowY: 'auto' }}
+        className={`calls-list ${transitionStage}`}
+        onAnimationEnd={() => { setTransistionStage("fadeIn"); }}
+      >
         {calls &&
           calls.map((call, index) => {
             if (call.is_archived == true) {
@@ -71,10 +82,10 @@ const Archive = () => {
                   {new Date(call.created_at).toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'}).replace(/,/g, '').replace(/(\s)/, ", ")}
                 </p>
 
-                <div 
+                <Link 
                   className='call-summary' 
                   key={index}
-                  onClick={() => handlePatchRequest(call.id)}
+                  to={'/call/' + call.id}
                 >
                   <div className='call-type'>
                       { call.call_type === 'answered' ? <FontAwesomeIcon icon={faPhoneVolume} style={{color: "#34b31d"}}/> : <FontAwesomeIcon icon={faPhoneSlash} style={{color: "#fc5624"}}/> }
@@ -89,7 +100,7 @@ const Archive = () => {
                     {new Date(call.created_at).toLocaleTimeString('en-US',{timeZone:'EST',hour12:true,hour:'numeric',minute:'numeric'})}
                     <span></span>
                   </p>
-                </div>
+                </Link>
               </div>
             }
           })}

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect, displayLocation } from 'react';
 import useSWR, { mutate } from 'swr';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,6 +18,12 @@ const Inbox = () => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [calls]);
+
+  const [transitionStage, setTransistionStage] = useState("fadeIn");
+
+  useEffect(() => {
+    if (location !== displayLocation) setTransistionStage("fadeOut");
+  }, [location, displayLocation]);
 
   const handlePatchAll = async (calls) => {
     try {
@@ -40,7 +46,7 @@ const Inbox = () => {
   };
 
   if (error) return <div className='failed'>failed to load</div>;
-  if (isValidating) return <div className="Loading">Loading...</div>;
+  if (isValidating) return // <div className="Loading">Loading...</div>;
 
   return (
     <div>
@@ -50,7 +56,11 @@ const Inbox = () => {
         </div>
       </div>
 
-      <div className='calls-list' style={{ maxHeight: 'calc(666px - 121px)', overflowY: 'auto' }}>
+      <div 
+        style={{ maxHeight: 'calc(666px - 121px)', overflowY: 'auto' }}
+        className={`calls-list ${transitionStage}`}
+        onAnimationEnd={() => { setTransistionStage("fadeIn"); }}
+      >
         {calls &&
           calls.map((call, index) => {
             if (call.is_archived == false) {

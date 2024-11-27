@@ -4,7 +4,7 @@ header {
   display: flex;
   justify-content: space-between;
   background: white;
-  border-bottom: 1px solid #e0e0e0;
+  /* border-bottom: 1px solid #e0e0e0; */
   flex: 0 1 auto;
   z-index: 1;
 }
@@ -45,4 +45,14 @@ ul:first-child {
 .active {
   border-bottom: 4px solid #fc5624;
   padding-bottom: 16px;
+  /* animation: shrinkSides 2s infinite alternate; */
 }
+
+/* @keyframes shrinkSides {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0, 1);
+  }
+} */

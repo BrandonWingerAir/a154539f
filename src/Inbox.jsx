@@ -70,9 +70,13 @@ const Inbox = () => {
           calls.map((call, index) => {
             if (call.is_archived == false) {
               return <div key={index}>
-                <p className='call-date'>
-                  {new Date(call.created_at).toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'}).replace(/,/g, '').replace(/(\s)/, ", ")}
-                </p>
+                <div className='date-section'>
+                  <div className='dotted-line'></div>
+                  <p className='call-date'>
+                    {new Date(call.created_at).toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'}).replace(/,/g, '').replace(/(\s)/, ", ")}
+                  </p>
+                  <div className='dotted-line'></div>
+                </div>
 
                 <Link 
                   className='call-summary' 

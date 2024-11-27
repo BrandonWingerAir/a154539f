@@ -42,7 +42,7 @@ const Header = () => {
               All calls
             </Link>
           </li>
-          <li><FontAwesomeIcon icon={faSliders} size='lg' /></li>
+          <li><FontAwesomeIcon icon={faSliders} size='xl' /></li>
         </ul>
       </nav>
     </header>

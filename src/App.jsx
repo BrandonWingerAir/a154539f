@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom';
 
 import Header from './Header.jsx';
+import Footer from './Footer.jsx';
+
 import Inbox from './Inbox.jsx';
 import Archive from './Archive.jsx';
 
@@ -28,6 +30,7 @@ const App = () => {
             />
           </Routes>
         </div>
+        <Footer/>
       </HashRouter>
     </div>
   );

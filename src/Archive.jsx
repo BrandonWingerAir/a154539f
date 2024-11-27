@@ -72,7 +72,7 @@ const Archive = () => {
       </div>
 
       <div 
-        style={{ maxHeight: 'calc(666px - 145px)', overflowY: 'auto' }}
+        style={{ maxHeight: 'calc(666px - 180px)', overflowY: 'auto' }}
         className={`calls-list ${transitionStage}`}
         onAnimationEnd={() => { setTransitionStage("fadeIn"); }}
       >

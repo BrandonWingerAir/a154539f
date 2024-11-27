@@ -24,7 +24,7 @@ nav {
   padding-left: 14px;
   margin-right: 4px;
   margin-top: 3px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-gray);
   border-bottom: 0;
   border-top-left-radius: 25px;
   font-size: 14px;
@@ -40,8 +40,13 @@ ul {
   align-items: center;
 }
 
-ul:first-child {
+ul li:first-of-type {
   padding-left: 7px;
+}
+
+ul li:last-of-type {
+  border-left: 1px dotted var(--border-gray);
+  padding-left: 10px;
 }
 
 .active {

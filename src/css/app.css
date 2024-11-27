@@ -1,6 +1,7 @@
 :root {
   --primary-text: #333;
   --seconday-text: #9e9e9e;
+  --border-gray: #e0e0e0;
 }
 
 #app {
@@ -22,7 +23,9 @@
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .9);
   overflow: hidden;
-  display: flex; flex-direction: column;
+  display: flex; 
+  flex-direction: column;
+  position: relative;
 }
 
 a {
@@ -31,10 +34,34 @@ a {
 }
 
 #app .container-view {
-  padding: 20px;
+  padding: 20px 0;
   padding-bottom: 0;
-  background: #fdfdfc;
+  background: rgb(253,253,252);
+  background: -moz-linear-gradient(180deg, rgba(253,253,252,1) 90%, rgba(247,247,246,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(253,253,252,1) 90%, rgba(247,247,246,1) 100%);
+  background: linear-gradient(180deg, rgba(253,253,252,1) 90%, rgba(247,247,246,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fdfdfc",endColorstr="#f7f7f6",GradientType=1);
   position: relative;
+}
+
+.notif-bubble {
+  background: rgb(231,66,26);
+  background: -moz-linear-gradient(180deg, rgba(231,66,26,1) 0%, rgba(252,84,34,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(231,66,26,1) 0%, rgba(252,84,34,1) 100%);
+  background: linear-gradient(180deg, rgba(231,66,26,1) 0%, rgba(252,84,34,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e7421a",endColorstr="#fc5422",GradientType=1);
+  color: white;
+  font-size: 11px;
+  padding: 0 4px 1px;
+  border-radius: 15px;
+  position: absolute;
+  top: 20%;
+  right: -12px;
+}
+
+.notif-bubble p {
+  font-weight: 600;
+
 }
 
 .call-summary, .archive-calls {
@@ -42,13 +69,14 @@ a {
   align-items: center;
   position: relative;
   padding: 10px 0 12px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-gray);
   border-radius: 10px;
   background-color: white;
+  margin: 0 20px;
 }
 
 .calls-list {
-  height: 666px;
+  height: calc(666px - 180px);
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   flex: 1 1 auto;
@@ -60,14 +88,28 @@ a {
   display: none;
 }
 
+.date-section {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.dotted-line {
+  width: 100%;
+  border-bottom: 1px dotted var(--border-gray);
+  padding: 0 14px;
+}
+
 .call-date {
+  width: 100%;
   text-align: center;
   color: var(--seconday-text);
   font-weight: 600;
+  padding: 0 10px;
 }
 
 .call-summary {
-  margin: 15px 0;
+  margin: 15px 18px;
 }
 
 .call-summary:hover {
@@ -82,6 +124,7 @@ a {
   border-top-right-radius: 0;
   z-index: 1;
   padding: 18px 0;
+  font-weight: 600;
 }
 
 .archive-calls:hover {
@@ -112,13 +155,14 @@ p {
   white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 220px;
+  max-width: 215px;
 }
 
 .call-time {
   position: absolute;
-  right: 4px;
-  word-spacing: 5px;
+  right: 5px;
+  font-size: 13px;
+  word-spacing: 12px;
   color: var(--seconday-text);
 }
 
@@ -126,9 +170,9 @@ p {
   width: 32px;
   height: 17px;
   position: absolute;
-  right: -8px;
+  right: -5px;
   top: -1px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-gray);
   border-right: none;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;

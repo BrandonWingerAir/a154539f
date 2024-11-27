@@ -1,0 +1,92 @@
+footer {
+    background: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 376px;
+    height: 54px;
+    border-top: 1px solid var(--border-gray);
+}
+
+footer > div {
+    height: 100%;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Menu Button -Circle Grid */
+.circles-btn {
+    border: 1px solid var(--border-gray);
+    border-radius: 50%;
+    margin-bottom: 30px;
+}
+
+.green-circle {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    background-image: radial-gradient(49% 81% at 45% 47%, #38b61f 0%, #49c322 100%);
+    border: 5px solid white;
+    height: 55px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 20px;
+    height: 20px;
+    column-gap: 3px;
+    row-gap: 3px;
+    position: relative;
+    left: -1px;
+    top: -2px;
+}
+
+.circles-btn span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* Nav Item - Circle Icon */
+.circle-btn {
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--border-gray);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-btn span {
+    background-image: radial-gradient(49% 81% at 45% 47%, #38b61f 0%, #49c322 100%);
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+}
+
+.bottom-nav-item {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.active-bottom-nav {
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    width: 113%;
+    background: #4ac422;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}

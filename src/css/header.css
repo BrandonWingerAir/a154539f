@@ -63,3 +63,23 @@ ul li:last-of-type {
     border-bottom: 4px solid #fc5624;
   }
 }
+
+@media (max-width: 810px) {
+  header svg {
+    width: 105px;
+  }
+
+  li {
+    width: 30%;
+  }
+  
+  ul li:last-of-type {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .active {
+    padding-bottom: 12px;
+  }
+}
